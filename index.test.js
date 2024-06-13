@@ -44,3 +44,15 @@ test("caesar cipher with negative key", () => {
 test("caesar cipher wraps around", () => {
   expect(caesarCipher("xyz", 3)).toBe("abc");
 });
+
+test("caesar cipher with key & original letter case", () => {
+  expect(caesarCipher("aBc", 3)).toBe("dEf");
+});
+
+test("caesar cipher negative key & original letter case", () => {
+  expect(caesarCipher("aBc", -3)).toBe("xYz");
+});
+
+test("caesar cipher wraps around & original letter case", () => {
+  expect(caesarCipher("xYz", 3)).toBe("aBc");
+});

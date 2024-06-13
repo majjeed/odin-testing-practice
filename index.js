@@ -22,21 +22,21 @@ const calculator = {
 };
 
 function caesarCipher(str, key) {
-  let result = "";
+  return str
+    .split("")
+    .map((char) => {
+      if (char.match(/[a-zA-Z]/)) {
+        let code = char.charCodeAt(0);
+        let base = code >= 65 && code <= 90 ? 65 : 97;
 
-  let arr = str.split("").map((element) => {
-    let elCode = element.charCodeAt();
-    if (elCode + key > 122) {
-      return ((elCode + key) % 122) + 96;
-    } else if (elCode + key < 97) {
-      return 123 - (97 % (elCode + key));
-    } else {
-      return elCode + key;
-    }
-  });
+        let shiftedCode = ((code - base + key + 26) % 26) + base;
 
-  result = String.fromCharCode(...arr);
-  return result;
+        return String.fromCharCode(shiftedCode);
+      } else {
+        return char;
+      }
+    })
+    .join("");
 }
 
 export { capitalize, reverseString, calculator, caesarCipher };
