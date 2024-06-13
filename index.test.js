@@ -1,5 +1,11 @@
 import { test, expect } from "@jest/globals";
-import { capitalize, reverseString, calculator, caesarCipher } from "./index";
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+  analyzeArray,
+} from "./index";
 
 test("capitalize first character of a word", () => {
   expect(capitalize("hello")).toBe("Hello");
@@ -55,4 +61,29 @@ test("caesar cipher negative key & original letter case", () => {
 
 test("caesar cipher wraps around & original letter case", () => {
   expect(caesarCipher("xYz", 3)).toBe("aBc");
+});
+
+test("return obj with multiple properties", () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
+    average: 4,
+    min: 1,
+    max: 8,
+    length: 6,
+  });
+});
+
+test("return obj with average property", () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6]).average).toEqual(4);
+});
+
+test("return obj with min property", () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6]).min).toEqual(1);
+});
+
+test("return obj with max property", () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6]).max).toEqual(8);
+});
+
+test("return obj with length property", () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6]).length).toEqual(6);
 });
