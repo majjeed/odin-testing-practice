@@ -1,5 +1,5 @@
 import { test, expect } from "@jest/globals";
-import { capitalize, reverseString, calculator } from "./index";
+import { capitalize, reverseString, calculator, caesarCipher } from "./index";
 
 test("capitalize first character of a word", () => {
   expect(capitalize("hello")).toBe("Hello");
@@ -31,4 +31,16 @@ test("calculator divides 2 numbers", () => {
 
 test("calculator multiplies 2 numbers", () => {
   expect(calculator.multiply(5, 5)).toBe(25);
+});
+
+test("encrypt with caesar cipher key", () => {
+  expect(caesarCipher("abc", 3)).toBe("def");
+});
+
+test("caesar cipher with negative key", () => {
+  expect(caesarCipher("abc", -3)).toBe("xyz");
+});
+
+test("caesar cipher wraps around", () => {
+  expect(caesarCipher("xyz", 3)).toBe("abc");
 });

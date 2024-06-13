@@ -20,4 +20,23 @@ const calculator = {
     return a * b;
   },
 };
-export { capitalize, reverseString, calculator };
+
+function caesarCipher(str, key) {
+  let result = "";
+
+  let arr = str.split("").map((element) => {
+    let elCode = element.charCodeAt();
+    if (elCode + key > 122) {
+      return ((elCode + key) % 122) + 96;
+    } else if (elCode + key < 97) {
+      return 123 - (97 % (elCode + key));
+    } else {
+      return elCode + key;
+    }
+  });
+
+  result = String.fromCharCode(...arr);
+  return result;
+}
+
+export { capitalize, reverseString, calculator, caesarCipher };
